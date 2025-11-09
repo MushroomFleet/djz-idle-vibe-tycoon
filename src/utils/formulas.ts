@@ -61,13 +61,16 @@ export const estimateCompletionTime = (level: number, automationPower: number): 
 
 /**
  * Format large numbers for display
+ * Uses K/M/B/T for familiar ranges, scientific notation for extreme values
  */
 export const formatNumber = (num: number): string => {
   if (num < 1000) return Math.floor(num).toString();
   if (num < 1000000) return (num / 1000).toFixed(1) + 'K';
   if (num < 1000000000) return (num / 1000000).toFixed(1) + 'M';
   if (num < 1000000000000) return (num / 1000000000).toFixed(1) + 'B';
-  return (num / 1000000000000).toFixed(1) + 'T';
+  if (num < 1000000000000000) return (num / 1000000000000).toFixed(1) + 'T';
+  // Use scientific notation for quadrillion and beyond
+  return num.toExponential(2);
 };
 
 /**

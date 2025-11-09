@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useGameStore } from './store/gameStore';
 import { Terminal } from './components/Terminal';
 import { FileSystem } from './components/FileSystem';
@@ -6,12 +6,17 @@ import { ActionButtons } from './components/ActionButtons';
 import { ProgressBar } from './components/ProgressBar';
 import { Stats } from './components/Stats';
 import { Automations } from './components/Automations';
+import { FatigueBar } from './components/FatigueBar';
+import { CashDisplay } from './components/CashDisplay';
+import { EventModal } from './components/EventModal';
+import { NewGameModal } from './components/NewGameModal';
 
 function App() {
   const tick = useGameStore(state => state.tick);
   const projectName = useGameStore(state => state.projectName);
   const level = useGameStore(state => state.level);
   const addTerminalLine = useGameStore(state => state.addTerminalLine);
+  const [showNewGameModal, setShowNewGameModal] = useState(false);
   
   // Game loop - runs every 100ms
   useEffect(() => {
@@ -77,7 +82,21 @@ function App() {
                 AI-Powered Code Simulation · Holographic Development Environment
               </p>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-3 items-center">
+              <CashDisplay />
+              <button
+                onClick={() => setShowNewGameModal(true)}
+                className="px-3 py-2 bg-holo-pink/10 hover:bg-holo-pink/20 border border-holo-pink/30 hover:border-holo-pink/50 rounded-lg transition-all group"
+                title="Start a new game"
+              >
+                <div className="flex items-center gap-2">
+                  <i className="fas fa-rotate-right text-holo-pink text-sm group-hover:rotate-180 transition-transform duration-300"></i>
+                  <div>
+                    <div className="text-xs text-holo-pink/60 font-mono">NEW</div>
+                    <div className="text-sm text-holo-pink font-mono font-bold">GAME</div>
+                  </div>
+                </div>
+              </button>
               <div className="px-4 py-2 bg-holo-cyan/10 border border-holo-cyan/30 rounded-lg">
                 <div className="text-xs text-holo-cyan/60 font-mono">SESSION</div>
                 <div className="text-sm text-holo-cyan font-mono font-bold">ACTIVE</div>
@@ -97,6 +116,15 @@ function App() {
                 <h3 className="text-sm font-bold text-holo-cyan font-mono">CODING ACTIONS</h3>
               </div>
               <ActionButtons />
+            </div>
+            
+            {/* Fatigue Bar */}
+            <div className="bg-terminal-bg/50 backdrop-blur-sm border border-holo-pink/30 rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-holo-pink/20">
+                <i className="fas fa-battery-half text-holo-pink text-sm"></i>
+                <h3 className="text-sm font-bold text-holo-pink font-mono">FATIGUE</h3>
+              </div>
+              <FatigueBar />
             </div>
             
             {/* Stats */}
@@ -146,6 +174,15 @@ function App() {
           <p className="mt-1">Click to code · Automate to scale · Deliver to level up</p>
         </footer>
       </div>
+      
+      {/* Event Modals */}
+      <EventModal />
+      
+      {/* New Game Modal */}
+      <NewGameModal 
+        isOpen={showNewGameModal} 
+        onClose={() => setShowNewGameModal(false)} 
+      />
     </div>
   );
 }

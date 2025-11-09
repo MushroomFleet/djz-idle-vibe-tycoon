@@ -22,6 +22,30 @@ export interface GameState {
   // Game loop
   lastTick: number;
   isPaused: boolean;
+  
+  // Fatigue system
+  fatigueLevel: number;
+  maxFatigue: number;
+  isFatigued: boolean;
+  dayCount: number;
+  sleepDebt: number; // Accumulated fatigue clicks beyond max during modals
+  
+  // Economy
+  cash: number;
+  marketDirection: 'up' | 'down';
+  lastPayment: number;
+  
+  // Events
+  eventTriggered50: boolean;
+  eventTriggered90: boolean;
+  activeModal: 'none' | 'bugs' | 'hardware' | null;
+  
+  // Hardware/Stability
+  stability: number; // 0-100
+  
+  // Bugs modal
+  bugsClicksRequired: number;
+  bugsClicksProgress: number;
 }
 
 export interface Automation {
