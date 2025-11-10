@@ -266,3 +266,24 @@ Contributions welcome! Focus areas:
 **Made with ❤️ for the idle game community**
 
 *Vibe on, code on!* 🌈💻✨
+
+## 📚 Citation
+
+### Academic Citation
+
+If you use this codebase in your research or project, please cite:
+
+```bibtex
+@software{djz_idle-vibe_tycoon,
+  title = {djz idle vibe tycoon: description},
+  author = {[Drift Johnson]},
+  year = {2025},
+  url = {https://github.com/MushroomFleet/djz-idle-vibe-tycoon},
+  version = {1.0.0}
+}
+```
+
+### Donate:
+
+
+[![Ko-Fi](https://cdn.ko-fi.com/cdn/kofi3.png?v=3)](https://ko-fi.com/driftjohnson)
