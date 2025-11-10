@@ -275,7 +275,7 @@ If you use this codebase in your research or project, please cite:
 
 ```bibtex
 @software{djz_idle-vibe_tycoon,
-  title = {djz idle vibe tycoon: description},
+  title = {djz idle vibe tycoon: code simulation idle clicker game},
   author = {[Drift Johnson]},
   year = {2025},
   url = {https://github.com/MushroomFleet/djz-idle-vibe-tycoon},
